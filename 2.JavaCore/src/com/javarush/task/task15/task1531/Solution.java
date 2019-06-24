@@ -12,6 +12,7 @@ import java.util.stream.IntStream;
 * или похитрее https://habr.com/ru/post/60306/
 *
 * ну и знакомство с BigInteger и понимание того какой цикл будет быстрее
+*
 Факториал
 */
 
@@ -32,7 +33,8 @@ public class Solution {
 
         BigInteger result = new BigInteger(Integer.toString(1));
 
-        long start = System.currentTimeMillis();
+//      Замер времени
+//        long start = System.currentTimeMillis();
 
 // данный цикл быстрее - факториал числа 323456 посчитался за 90 сек
         for(int i = 1; i <= n; i++){
@@ -47,11 +49,12 @@ public class Solution {
 
         }
 
-        long end = System.currentTimeMillis();
-
-        long diffTime = end-start;
-
-        System.out.println(diffTime/1000);
+//      Замер времени
+//        long end = System.currentTimeMillis();
+//
+//        long diffTime = end-start;
+//
+//        System.out.println(diffTime/1000);
 
         return result.toString();
     }
