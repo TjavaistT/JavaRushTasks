@@ -3,7 +3,7 @@ package com.javarush.task.task16.task1631;
 import com.javarush.task.task16.task1631.common.ImageReader;
 import com.javarush.task.task16.task1631.common.ImageTypes;
 
-/* Возможно тут понаглядней чем при создании плееров и ботов
+/* Возможно тут понаглядней, чем в игре по угадыванию при создании плееров и ботов
 *
 Задача 1631 - Фабрика
  */
