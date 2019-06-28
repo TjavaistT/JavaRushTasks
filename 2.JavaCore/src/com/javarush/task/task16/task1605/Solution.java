@@ -2,7 +2,7 @@ package com.javarush.task.task16.task1605;
 
 import java.util.Date;
 
-/* 
+/* Задача 1605 - Измерить время работы нити
 Поговорим о музыке
 */
 

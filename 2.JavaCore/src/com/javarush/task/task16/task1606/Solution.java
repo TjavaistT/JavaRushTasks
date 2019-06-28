@@ -3,7 +3,7 @@ package com.javarush.task.task16.task1606;
 import java.util.ArrayList;
 import java.util.List;
 
-/* 
+/* Задача 1606 - ПОдождать завршения нити - способ номер 1 навести порядок с нитями
 join: в нужное время в нужном месте
 */
 
