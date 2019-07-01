@@ -1,11 +1,12 @@
 package com.javarush.task.task16.task1610;
 
-/* 
+/* Задача 1610 - роди, собери, накорми... хорошо, что я не кошка
 Расставь вызовы методов join()
 */
 
 public class Solution {
     public static void main(String[] args) throws InterruptedException {
+        //между кошками нет никакой связи - не трогаем здесь ничего
         Cat cat1 = new Cat("Мурка");
         Cat cat2 = new Cat("Пушинка");
     }
@@ -32,6 +33,9 @@ public class Solution {
         public void run() {
             System.out.println(getName() + " родила 2 котенка");
             try {
+                // а вот котят можно собирать только после того как расползутся
+                // ждем пока каждый найдет себе угол, чтоб туда забурится
+                // и потом уже можно собирать беглецов
                 initAllKittens();
                 kitten1.join();
                 kitten2.join();
