@@ -1,6 +1,7 @@
 package com.javarush.task.task16.task1613;
 
-/* 
+/* Задача 1613 - простые и эллегантные часы
+*
 Big Ben clock
 */
 
