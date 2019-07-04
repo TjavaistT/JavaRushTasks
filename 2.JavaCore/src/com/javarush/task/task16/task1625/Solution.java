@@ -1,6 +1,6 @@
 package com.javarush.task.task16.task1625;
 
-/* 
+/* Задача 1625
 Взаимная блокировка
 */
 
@@ -10,6 +10,7 @@ public class Solution {
 
     public static void main(String[] args) throws InterruptedException {
         t1.start();
+        //когда нитки пютаются их приходится рвать :(
         t1.interrupt();
         t2.start();
     }
