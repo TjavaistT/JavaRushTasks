@@ -1,49 +1,25 @@
 package com.javarush.task.task18.task1815;
 
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
-/* 
-Таблица
+/*
+Омовение Рамы
 */
 
 public class Solution {
-    public class TableInterfaceWrapper implements TableInterface{
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String string = reader.readLine();
 
-        private TableInterface component;
-
-        public TableInterface getComponent() {
-            return component;
+        char [] chArr = string.toCharArray();
+        chArr[0] = Character.toUpperCase(chArr[0]);
+        for (int i = 1; i < chArr.length; i ++) {
+            if (chArr[i] == ' ') {
+                chArr[i+1] = Character.toUpperCase(chArr[i+1]);
+            }
         }
-
-        public TableInterfaceWrapper(TableInterface component) {
-            this.component = component;
-        }
-
-        @Override
-        public void setModel(List rows) {
-            System.out.println(rows.size());
-            component.setModel(rows);
-        }
-
-        @Override
-        public String getHeaderText() {
-            return component.getHeaderText().toUpperCase();
-        }
-
-        @Override
-        public void setHeaderText(String newHeaderText) {
-            component.setHeaderText(newHeaderText);
-        }
-    }
-
-    public interface TableInterface {
-        void setModel(List rows);
-
-        String getHeaderText();
-
-        void setHeaderText(String newHeaderText);
-    }
-
-    public static void main(String[] args) {
+        System.out.println(String.valueOf(chArr));
     }
 }
