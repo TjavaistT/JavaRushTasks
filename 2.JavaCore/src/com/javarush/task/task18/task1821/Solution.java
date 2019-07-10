@@ -15,6 +15,8 @@ public class Solution {
         HashMap<Byte, Integer> bytesStatistic = new HashMap<>();
         try(FileInputStream FileInStream = new FileInputStream(filePath)) {
             byte[] fileContent = new byte[FileInStream.available()];
+            //код оптимизирован по скорости выполнения - считываются все байты сразу
+            //если считывать по одному байту код можно сделать чуть-чуть компактнее
             FileInStream.read(fileContent);
 
             //Посчитать статистику встречающихся байт
