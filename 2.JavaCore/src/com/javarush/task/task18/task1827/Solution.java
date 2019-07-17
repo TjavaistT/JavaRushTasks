@@ -6,7 +6,6 @@ package com.javarush.task.task18.task1827;
 
 import java.io.*;
 import java.util.*;
-import java.util.regex.Pattern;
 
 public class Solution {
     public static void main(String[] args) {
@@ -15,9 +14,9 @@ public class Solution {
                 String filename = scanConsole.nextLine();
                 Scanner readFileScan = new Scanner(new BufferedInputStream(new FileInputStream(filename)));
 
-                Integer currentMaxId = getItems(readFileScan).stream().map(Item::getId).max(Integer::compareTo).orElse(0);
+                Long currentMaxId = getItems(readFileScan).stream().map(Item::getId).max(Long::compareTo).orElse((long) 0);
 
-                Item newItem = new Item(currentMaxId + 1, args[1], Double.parseDouble(args[2]), Integer.valueOf(args[3]));
+                Item newItem = new Item((currentMaxId + 1), args[1], Double.parseDouble(args[2]), Integer.valueOf(args[3]));
 
                 readFileScan.close();
                 BufferedOutputStream writeFileBuf = new BufferedOutputStream(new FileOutputStream(filename, true));
@@ -36,7 +35,6 @@ public class Solution {
         List<Item> items = new ArrayList<>();
 
         try {
-            scanFile.useDelimiter(Pattern.compile(".{3}"));
 
             while (scanFile.hasNextLine()){
                 String strItem = scanFile.nextLine();
@@ -53,7 +51,7 @@ public class Solution {
                     //значения товара записаны в файле по порядку - Id, Имя Цена, Количество
                     //в таком порядке и проверяем
                     if (currentItem.getId() == null) {
-                        currentItem.setId(Integer.parseInt(paramItem.trim()));
+                        currentItem.setId(Long.parseLong(paramItem.trim()));
                         continue;
                     }
 
@@ -88,7 +86,7 @@ public class Solution {
     //поступим как верные ООП-адепты - создадим объект Товар
     public static class Item{
 
-        private Integer id = null;
+        private Long id = null;
 
         private String name = null;
 
@@ -96,7 +94,7 @@ public class Solution {
 
         private Integer quantity = null;
 
-        public Integer getId() {
+        public Long getId() {
             return id;
         }
 
@@ -115,14 +113,14 @@ public class Solution {
         public Item() {
         }
 
-        public Item(Integer id, String name, Double price, Integer quantity) {
+        public Item(Long id, String name, Double price, Integer quantity) {
             this.id = id;
             this.name = name;
             this.price = price;
             this.quantity = quantity;
         }
 
-        public void setId(Integer id) {
+        public void setId(Long id) {
             this.id = id;
         }
 
