@@ -1,0 +1,3 @@
+text in file
+text in file
+строка 3
