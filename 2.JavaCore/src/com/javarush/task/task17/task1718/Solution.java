@@ -1,6 +1,6 @@
 package com.javarush.task.task17.task1718;
 
-/* Утюг - какое интересно слово... наверно, что-то с утками связанно
+/* Утюг - какое интересно, незнакомое слово... наверно, что-то с утками связанно
 Глажка
 */
 
@@ -20,6 +20,7 @@ public class Solution {
 
         @Override
         public void run() {
+
             synchronized (Iron.class) {
                 Iron iron = takeIron();
                 Clothes clothes = takeClothes();
