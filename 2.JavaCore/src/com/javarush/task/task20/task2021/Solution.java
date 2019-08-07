@@ -2,7 +2,10 @@ package com.javarush.task.task20.task2021;
 
 import java.io.*;
 
-/* 
+/* Хак заложенный в системе
+private void writeObject и private void readObject(ObjectInputStream ois)
+вызываются при сериализации поэтому в них необходимо поместить исключения
+
 Сериализация под запретом
 */
 public class Solution implements Serializable {
