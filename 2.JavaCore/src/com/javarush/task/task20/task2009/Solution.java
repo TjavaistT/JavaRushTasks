@@ -2,7 +2,8 @@ package com.javarush.task.task20.task2009;
 
 import java.io.Serializable;
 
-/*
+/* Задача 2009 - статические пол не сериализуются - (они ведь к классу относятся, а не к объекту)
+* их можно сериализовать вручную с помощью интерфейса Externalizable
 Как сериализовать static?
 */
 public class Solution {
