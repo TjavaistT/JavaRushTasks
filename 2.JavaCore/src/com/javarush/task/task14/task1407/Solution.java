@@ -3,8 +3,7 @@ package com.javarush.task.task14.task1407;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-/* Задача 1407 - в задаче есть логическая ошибка
-* метод haveFun будет отдавать последний успешный результат и для строителя и для продавца и для любой строчки
+/* Задача 1407 - просто разный результат в зависимости от типа переменной
 Player and Dancer
 */
 
@@ -12,7 +11,7 @@ public class Solution {
     public static void main(String[] args) throws Exception {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        Person person = null;
+        Person person;
         String key;
         while (!(key = reader.readLine()).equals("exit")) {
             if ("player".equals(key)) {
