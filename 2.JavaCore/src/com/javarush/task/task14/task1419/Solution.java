@@ -27,6 +27,7 @@ public class Solution {
             exceptions.add(e);
         }
 
+
         exceptions.add(new NullPointerException());
         exceptions.add(new ArrayIndexOutOfBoundsException());
         exceptions.add(new ClassCastException());
