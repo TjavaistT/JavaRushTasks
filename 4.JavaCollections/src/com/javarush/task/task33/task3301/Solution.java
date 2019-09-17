@@ -34,6 +34,8 @@ public class Solution {
 
     public static void convertToJSON(StringWriter writer, Object object) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
+//        Проблема была в том, что гетеров не было, их можн добавить, а можно сказать чтобы ими не пользовались
+//        mapper.disable(MapperFeature.USE_GETTERS_AS_SETTERS);
         mapper.writeValue(writer, object);
     }
 
