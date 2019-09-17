@@ -3,7 +3,8 @@ package com.javarush.task.task09.task0930;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Comparator;
+import java.util.stream.Collectors;
 
 /* 
 Задача по алгоритмам
@@ -14,6 +15,9 @@ import java.util.Arrays;
 */
 
 public class Solution {
+
+    static String[] array = new String[0];
+
     public static void main(String[] args) throws Exception {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         ArrayList<String> list = new ArrayList<>();
@@ -23,7 +27,7 @@ public class Solution {
             list.add(s);
         }
 
-        String[] array = list.toArray(new String[0]);
+        array = list.toArray(new String[0]);
         sort(array);
 
         for (String x : array) {
@@ -43,61 +47,37 @@ public class Solution {
         for (String x : array) {
             if (isNumber(x)) {
                 numbers.add(Integer.valueOf(x));
+                structure.add("number");
             } else {
                 lines.add(x);
+                structure.add("string");
             }
         }
 
         // сортировка по возрастанию
         // список преобразоват в массив - массив отсортировать - преобразовать обратно в список
-        lines = (ArrayList<String>) Arrays.asList(sortMergeAsc(lines.toArray(new String[0])));
+        lines = (ArrayList<String>) lines.stream().sorted((a, b) -> isGreaterThan(a, b) ? 1 : -1).collect(Collectors.toList());
 
         // сортировка по убыванию
-//        sortMergeDesc(numbers);
+        numbers = (ArrayList<Integer>) numbers.stream()
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
 
-        for (int i = 0; i < array.length; i++){
-            if(isNumber(array[i])){
-                array[i] = String.valueOf(numbers.get(0));
-                numbers.remove(0);
-            } else {
-                array[i] = lines.get(0);
+        for (int i = 0; i < structure.size(); i++) {
+            String element = structure.get(i);
+
+            if (element.equals("string")) {
+                element = lines.get(0);
                 lines.remove(0);
             }
-        }
-    }
 
-    //Метод сортировки строк
-    public static String[] sortMergeAsc(String[] lines){
-        String[] resultSort = new String[lines.length];
-
-        if (lines.length == 1){
-            resultSort = lines;
-        } else {
-
-            int half = lines.length / 2;
-
-            String[] firstArray = sortMergeAsc(Arrays.copyOfRange(lines, 0 , half));
-            String[] secondArray = sortMergeAsc(Arrays.copyOfRange(lines, half, lines.length - 1));
-            int i = 0;
-            int j = 0;
-
-            for (int n = 0; n < (firstArray.length + secondArray.length-1); n++) {
-                if (isGreaterThan(firstArray[i], secondArray[j])) {
-                    resultSort[n] = firstArray[i];
-                    i++;
-                } else {
-                    resultSort[n] = secondArray[j];
-                    j++;
-                }
+            if (element.equals("number")) {
+                element = String.valueOf(numbers.get(0));
+                numbers.remove((int) 0);
             }
+
+            Solution.array[i] = element;
         }
-
-        return resultSort;
-    }
-
-    //Метод сортировки чисел
-    public static void sortMergeDesc(ArrayList<Integer> lines){
-
     }
 
     // Метод для сравнения строк: 'а' больше чем 'b'
